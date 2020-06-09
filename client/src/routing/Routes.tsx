@@ -12,7 +12,7 @@ export const Routes = ()  => (
   <React.Fragment>
       <Router primary={false} component={React.Fragment}>
         <Cinemas path="/"/>
-        <Cinema path="cinema/cinemaId" />
+        <Cinema path="cinema/:cinemaId" />
       </Router>
       </React.Fragment>
 )

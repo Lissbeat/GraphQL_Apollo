@@ -9,9 +9,9 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Container } from "./pageStyles/PageContainer";
 import { ListItem, List } from "./pageStyles/List";
-import { GetAllCinemas_cinemas , GetAllCinemas} from "./interfaces/GetAllCinemas";
+import {CinemasDetails, CinemaDetails_cinema} from "./interfaces/CinemaTypes";
 import { SelectButton } from "./pageStyles/Button";
-import SidebarLeft from "./pageStyles/SideBar";
+import SidebarLeft from "./sideBar/SideBar";
 
 // import * as DeckDetailsTypes from "../generated/DeckDetails";
 // styles
@@ -27,7 +27,7 @@ import SidebarLeft from "./pageStyles/SideBar";
 // query
 
 
-export const GET_Cinemas = gql`
+export const GET_CINEMAS = gql`
   query GetAllCinemas {
     cinemas {
       id
@@ -46,8 +46,8 @@ interface ICinemas extends RouteComponentProps {
 }
 
 const Cinemas: React.FC<ICinemas> = () => {
-    const { data, error, loading } = useQuery<GetAllCinemas, GetAllCinemas_cinemas>(
-        GET_Cinemas
+    const { data, error, loading } = useQuery<CinemasDetails, CinemaDetails_cinema>(
+        GET_CINEMAS
       );
       if (loading || !data) {
         return <div>Loading...</div>;
@@ -58,11 +58,11 @@ const Cinemas: React.FC<ICinemas> = () => {
   return (
 
     <React.Fragment>
-            <SidebarLeft/>
+            <SidebarLeft object= "cinema"/>
     
         <Container>
       
-        {data.cinemas?.map((cinema: GetAllCinemas_cinemas) => (
+        {data.cinemas?.map((cinema: CinemaDetails_cinema) => (
             
           <List key={cinema.id}>
       <h2>{cinema.cinema_name} </h2>

@@ -3,8 +3,14 @@ import React from 'react'
 import { Header, Icon, Image, Menu, Segment, Sidebar, Divider } from 'semantic-ui-react'
 import { navigate } from '@reach/router';
 import Modal from "@bdenzer/react-modal";
+import ModalView from './ModalView';
 
-const SidebarLeft: React.FC = () => {
+interface ISideBar{
+  objectId?:any; 
+  object: string;
+}
+
+const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
 
     const [shouldShowModal, setModal] = React.useState(false);
     const openModal= () => {
@@ -36,7 +42,7 @@ const SidebarLeft: React.FC = () => {
         </Menu.Item>
       </Sidebar>
               <Modal closeModal={closeModal} shouldShowModal={shouldShowModal}  >
-
+              <ModalView object= {object}/>
               </Modal>
               </React.Fragment>
     
