@@ -14,14 +14,20 @@ import 'semantic-ui-css/semantic.min.css';
 
 import { Routes } from "./routing/Routes";
 import { client } from "./ApolloClient";
+import { ThemeProvider } from "styled-components";
 
 //import Routs from routing configuration
+const theme = {
+  main: "mediumseagreen"
+};
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+<ThemeProvider theme={theme}>
     <BrowserRouter>
     <Routes/> 
     </BrowserRouter>
+    </ThemeProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

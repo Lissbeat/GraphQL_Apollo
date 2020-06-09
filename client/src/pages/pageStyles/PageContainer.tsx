@@ -5,8 +5,8 @@ export const Container = styled("div")`
  overflow-y: hidden;     /* Disable vertical scroll */
   position: absolute;
   /*Ops do not edit!!*/
-  top: 9%;
-  left: 10%;
+  top: 0%;
+  left: 25%;
   width: 80%;
   height: 300%;
   background-color:white; 
