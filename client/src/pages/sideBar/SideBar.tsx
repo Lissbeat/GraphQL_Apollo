@@ -42,11 +42,10 @@ const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
         </Menu.Item>
       </Sidebar>
               <Modal closeModal={closeModal} shouldShowModal={shouldShowModal}  >
-              <ModalView object= {object}/>
+              <ModalView closeModal= {closeModal} object= {object} objectId= {objectId}/>
               </Modal>
               </React.Fragment>
     
-  
   )
 }
 

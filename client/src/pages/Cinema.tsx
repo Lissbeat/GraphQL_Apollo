@@ -67,7 +67,7 @@ const Cinema: React.FC<ICinema> = ({cinemaId}) => {
   return (
 
     <React.Fragment>
-            <SidebarLeft object= "movie"/>
+            <SidebarLeft object= "movie" objectId= {cinemaId}/>
     
         <Container>
       

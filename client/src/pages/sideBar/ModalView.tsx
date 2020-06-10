@@ -8,11 +8,14 @@ import CreateMovie from '../../components/movie/CreateMovie';
 
 interface IModalView{
     object:string;
+    objectId?:any; 
+    closeModal: () => void;
   
 }
 
-const ModalView: React.FC<IModalView> = ({object}) => {
+const ModalView: React.FC<IModalView> = ({object, objectId, closeModal}) => {
 
+    console.log(objectId); 
 
     const whichModal =() =>  {
         if (object === "cinema") {
@@ -26,7 +29,7 @@ const ModalView: React.FC<IModalView> = ({object}) => {
         if (object === "movie") {
           return (
             <div>
-            <CreateMovie/>
+            <CreateMovie closeModal= {closeModal} cinemaId= {objectId} />
             </div>
           );
         }
