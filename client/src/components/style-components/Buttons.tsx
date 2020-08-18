@@ -23,6 +23,7 @@ margin: auto;
 margin-top: ${props => props.MarginTop}px; 
 margin-right: 20px; 
 margin-left: 10px; 
+margin-bottom: 10px; 
 border: 2px solid white;
 border-radius: 4px;
 //kanppens farge endres når man holder over den

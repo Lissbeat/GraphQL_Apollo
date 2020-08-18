@@ -1,8 +1,7 @@
 
 import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar, Divider } from 'semantic-ui-react'
+import { Header, Icon, Image, Menu, Segment, Sidebar, Divider, Modal } from 'semantic-ui-react'
 import { navigate } from '@reach/router';
-import Modal from "@bdenzer/react-modal";
 import ModalView from './ModalView';
 
 interface ISideBar{
@@ -41,9 +40,16 @@ const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
           Create
         </Menu.Item>
       </Sidebar>
-              <Modal closeModal={closeModal} shouldShowModal={shouldShowModal}  >
-              <ModalView closeModal= {closeModal} object= {object} objectId= {objectId}/>
-              </Modal>
+      <Modal
+        
+        open={shouldShowModal}
+        onClose={closeModal}
+        size='large'
+        
+        
+      >
+        <ModalView closeModal= {closeModal} object= {object} objectId= {objectId}/>
+        ></Modal>
               </React.Fragment>
     
   )

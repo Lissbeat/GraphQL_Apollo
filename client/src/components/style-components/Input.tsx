@@ -14,6 +14,7 @@ padding: 5px 5px;
   letter-spacing: 0.2px;
   word-spacing: -0.2px;
   resize:none;
+  color: black; 
 `;
 
 //Input area size small

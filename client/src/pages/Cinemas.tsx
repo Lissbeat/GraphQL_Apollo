@@ -13,18 +13,7 @@ import {CinemasDetails, CinemaDetails_cinema} from "./interfaces/CinemaTypes";
 import { SelectButton } from "./pageStyles/Button";
 import SidebarLeft from "./sideBar/SideBar";
 
-// import * as DeckDetailsTypes from "../generated/DeckDetails";
-// styles
-// import { Header } from "./pageStyles/Header";
-// import { ContainerD } from "./pageStyles/PageContainer";
-// import { SidebarLeft, SidebarRight } from "./pageStyles/SideBar";
-// import { SideBarButton } from "../style-components/Button";
-// import ModalCreate from "../components/Modal/ModalCreate";
-// import { Icon } from "semantic-ui-react";
 
-// component thats handels drag and drop
-// import { GetContainers } from "../components/container/grid/GetContainers";
-// query
 
 
 export const GET_CINEMAS = gql`

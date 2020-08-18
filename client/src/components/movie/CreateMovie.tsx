@@ -1,65 +1,57 @@
-
-import React from 'react'
-
-
-import { useMutation } from '@apollo/react-hooks';
-import { CREATE_MOVIE, GET_MOVIES } from './Queries';
+//creating a movie, using formik for handling the form
+//success submit will create a new movie through the create movie mutation
+import React from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { CREATE_MOVIE, GET_MOVIES, GET_CINEMAS } from "../Queries";
 
 import { Formik, Form } from "formik";
 
-
 import { Message } from "semantic-ui-react";
-import { ConfirmButton } from '../style-components/Buttons';
-import { ValidationCreate } from './ValidationMovie';
-import CreateMovieInput from './CreateMovieInput';
-import { GET_CINEMAS } from '../../pages/Cinemas';
+import { ConfirmButton } from "../style-components/Buttons";
+import { ValidationCreate } from "./ValidationMovie";
+import CreateMovieInput from "./CreateMovieInput";
 
-interface ICreate{
-    cinemaId: any; 
-    closeModal:() => void; 
-
+interface ICreate {
+  cinemaId: any;
+  closeModal: () => void;
 }
 
-const CreateMovie: React.FC<ICreate> = ({cinemaId, closeModal}) => {
+const CreateMovie: React.FC<ICreate> = ({ cinemaId, closeModal }) => {
+  console.log("this is the id", cinemaId);
 
-    console.log("this is the id", cinemaId)
+  // the create movie mutation
+  const [createMovie, { data, loading, error }] = useMutation(CREATE_MOVIE, {
+    ignoreResults: false,
+    errorPolicy: "all",
+  });
 
-    const [createMovie, { data, loading, error }] = useMutation(
-        CREATE_MOVIE,
-        {
-          errorPolicy: "all",
-        }
-      );
+  //state for hiding status messages
+  const [hidden, setHidden] = React.useState(false);
 
-      const [hidden, setHidden] = React.useState(false);
+  //display message in 3 sek after submit
+  const displayMessage = () => {
+    setTimeout(() => {
+      setHidden(true);
+      closeModal();
+    }, 3000);
+  };
 
-      const displayMessage = () => {
-        setTimeout(() => {
-          setHidden(true);
-          closeModal();
-        }, 3000);
-      };
-
-    
   return (
-   <React.Fragment>
-        <Formik
+    <React.Fragment>
+      <Formik
         initialValues={{
           movie_name: "",
           description: "",
           genre: "",
         }}
         validationSchema={ValidationCreate}
-        onSubmit={(
-          { movie_name, description, genre },
-          { resetForm }
-        ) => {
+        onSubmit={({ movie_name, description, genre }, { resetForm }) => {
           createMovie({
             variables: {
               cinemaId: cinemaId,
               movie_name,
               description,
-              genre
+              genre,
             },
             refetchQueries: [{ query: GET_CINEMAS }],
           });
@@ -71,7 +63,11 @@ const CreateMovie: React.FC<ICreate> = ({cinemaId, closeModal}) => {
       >
         {({ errors, touched }) => (
           <Form>
-            <CreateMovieInput errors={errors} touched={touched}></CreateMovieInput>
+            {/*Input fileds, errors and touched from yup */}
+            <CreateMovieInput
+              errors={errors}
+              touched={touched}
+            ></CreateMovieInput>
 
             {loading && (
               <Message size="large" color="blue">
@@ -83,10 +79,10 @@ const CreateMovie: React.FC<ICreate> = ({cinemaId, closeModal}) => {
                 {error}
               </Message>
             )}
-          
+
             {data ? (
               <Message hidden={hidden} size="large" color="green">
-                Deck saved!
+                Movie saved!
               </Message>
             ) : null}
 
@@ -109,10 +105,8 @@ const CreateMovie: React.FC<ICreate> = ({cinemaId, closeModal}) => {
           </Form>
         )}
       </Formik>
-   </React.Fragment>
-    
-  
-  )
-}
+    </React.Fragment>
+  );
+};
 
-export default CreateMovie; 
+export default CreateMovie;

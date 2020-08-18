@@ -8,7 +8,7 @@ float: left;
   padding-right: 20px;
   color: white;
   width: 60%;
-  height: 11%; 
+  height: 13%; 
   text-align: center;
   background-color:#798E71 ; 
   margin-left: 2%; 
@@ -18,6 +18,24 @@ float: left;
 border-radius: 4px;
 `;
 
+
+export const ListMovie = styled("div")`
+float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
+  color: white;
+  width: 50%;
+  height: 20%; 
+  text-align: center;
+  background-color:#541814 ; 
+  margin-left: 2%; 
+  margin-right: 2%; 
+  margin-top: 4%;  
+  border: none;
+border-radius: 4px;
+`;
 
 export const ListItem = styled("div")`
 float: left;

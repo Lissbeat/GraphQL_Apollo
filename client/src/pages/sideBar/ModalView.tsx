@@ -21,7 +21,7 @@ const ModalView: React.FC<IModalView> = ({object, objectId, closeModal}) => {
         if (object === "cinema") {
           return (
             <div>
-             <CreateCinema />
+             <CreateCinema closeModal= {closeModal} />
             </div>
           );
         }

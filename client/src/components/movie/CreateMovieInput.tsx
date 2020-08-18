@@ -1,75 +1,72 @@
-
-import React from 'react'
-
-
-import { Grid, Divider, Label , Segment } from 'semantic-ui-react';
+//rendering the input fields with yup validation
+import React from "react";
+import { Grid, Divider, Label, Segment } from "semantic-ui-react";
 import { Field } from "formik";
-import { TextWhite, TextRed } from '../style-components/Text';
-import { InputFieldL, TextAreaL } from '../style-components/Input';
+import { TextBlack, TextRed } from "../style-components/Text";
+import { InputFieldL, TextAreaL } from "../style-components/Input";
 
-interface IInput{
-    errors: any;
-    touched: any;
-
+interface IInput {
+  errors: any;
+  touched: any;
 }
 
-const CreateMovieInput: React.FC<IInput> = ({errors, touched}) => {
-
-    
+const CreateMovieInput: React.FC<IInput> = ({ errors, touched }) => {
   return (
-   <React.Fragment>
-           <Grid columns="equal">
-      <Divider hidden />
-      <Grid.Row>
-        <Grid.Column>
-          <Segment inverted>
-            <TextWhite>Movie name<TextRed>*</TextRed></TextWhite>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment inverted>
-            <Field
-              placeholder="Enter movie name..."
-              name="movie_name"
-              type="text"
-              as={InputFieldL}
-            />
-            {errors.movie_name && touched.movie_name ? (
-              <Label size="large" color="red" pointing>
-                {errors.movie_name}
+    <React.Fragment>
+      <Grid columns="equal">
+        <Divider hidden />
+        <Grid.Row>
+          <Grid.Column>
+            <Segment inverted>
+              <TextBlack>
+                Movie name<TextRed>*</TextRed>
+              </TextBlack>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment inverted>
+              <Field
+                placeholder="Enter movie name..."
+                name="movie_name"
+                type="text"
+                as={InputFieldL}
+              />
+              {errors.movie_name && touched.movie_name ? (
+                <Label size="large" color="red" pointing>
+                  {errors.movie_name}
+                </Label>
+              ) : null}
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <Segment inverted>
+              <Label>
+                Genre <TextRed>*</TextRed>
               </Label>
-            ) : null}
-          </Segment>
-        </Grid.Column>
-      </Grid.Row>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment inverted>
+              <Field
+                placeholder="Enter genre..."
+                name="genre"
+                type="text"
+                as={InputFieldL}
+              />
 
-    
-      <Grid.Row>
-        <Grid.Column>
-          <Segment inverted>
-            <Label>Genre <TextRed>*</TextRed></Label>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment inverted>
-          <Field
-              placeholder="Enter genre..."
-              name="genre"
-              type="text"
-              as={InputFieldL}
-            />
-        
-            {errors.genre && touched.genre ? (
-              <Label size="large" color="red" pointing>
-                {errors.floor}
-              </Label>
-            ) : null}
-          </Segment>
-        </Grid.Column>
-      </Grid.Row>
+              {errors.genre && touched.genre ? (
+                <Label size="large" color="red" pointing>
+                  {errors.genre}
+                </Label>
+              ) : null}
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
 
-
-      <Grid.Row>
+        <Grid.Row>
           <Grid.Column>
             <Segment inverted>
               <Label>Description</Label>
@@ -91,15 +88,10 @@ const CreateMovieInput: React.FC<IInput> = ({errors, touched}) => {
               ) : null}
             </Segment>
           </Grid.Column>
-          </Grid.Row>
+        </Grid.Row>
+      </Grid>
+    </React.Fragment>
+  );
+};
 
-
-    </Grid>
-     
-   </React.Fragment>
-    
-  
-  )
-}
-
-export default CreateMovieInput; 
+export default CreateMovieInput;
