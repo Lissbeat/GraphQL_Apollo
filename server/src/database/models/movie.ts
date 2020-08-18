@@ -21,7 +21,7 @@ const movieModel = new Schema(
     description: {
       type: String
     },
-     //can contain a list of decks
+     // assosiated to a movie 
     cinema: 
       {
         type: Schema.Types.ObjectId,

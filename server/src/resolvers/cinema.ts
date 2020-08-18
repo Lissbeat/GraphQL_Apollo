@@ -11,14 +11,16 @@ export const cinemaReslover = {
     cinemas: () => {
       return Cinema.find({}).exec();
     },
-    //query rig by id
+    //query cinema by id
     cinema: async (_: any, { id }: any) => {
       try {
+        //check for valid mongoose id 
         if (!mongoose.Types.ObjectId.isValid(id)) {
           throw new UserInputError(id + "is not a valid ID");
         }
-        const rig = await Cinema.findById(id);
-        return rig;
+        //finds the queried cinema by given id, and returns it
+        const cinema = await (await Cinema.findById(id));
+        return cinema;
       } catch (error) {
         console.log(error);
         throw error;
@@ -26,10 +28,12 @@ export const cinemaReslover = {
     },
   },
   Mutation: {
-    addCinema: async (_: any, args: any, { cinema_name }: any) => {
+    //mutation for creating a new Cinema 
+    addCinema: async (_: any, args: any) => {
       try {
-        console.log(args);
+        //creates a new cinema 
         const newCinema = new Cinema(args);
+        //saves the newly created cinema, and returs the result
         const result = await newCinema.save();
         return result;
       } catch (error) {
@@ -38,10 +42,12 @@ export const cinemaReslover = {
       }
     },
   },
-  //get all rigs and the assosiated decks
+  //specifies the Cinema type
   Cinema: {
     movies: async ({ id }: any) => {
       try {
+        console.log("movie id"+ id);
+        
         const movies = await Movie.find({ cinema: id }).exec();
         return movies;
       } catch (error) {

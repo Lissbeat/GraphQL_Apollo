@@ -6,15 +6,18 @@ import mongoose from "mongoose";
 
 export const movieReslover = {
   Query: {
-    //query all the cinemas
+    //query all the movies 
     movies: () => {
-      return Movie.find({});
+      return Movie.find({}).exec();
     },
+    //query movie by id
     movie: async (_: any, { id }: any) => {
       try {
+            //check for valid mongoose id 
         if (!mongoose.Types.ObjectId.isValid(id)) {
           throw new UserInputError(id + "is not a valid ID");
         }
+        //finds the queried movie by given id, and returns it
         const movie = await Movie.findById(id);
         return movie;
       } catch (error) {
@@ -24,19 +27,24 @@ export const movieReslover = {
     },
   },
   Mutation: {
+       //mutation for creating a new Cinema 
     addMovie: async (
       _: any,
       { cinemaId, movie_name, genre, description }: any
     ) => {
       try {
+        //finds the cinema the movie should be assosiated with 
         const cinema = await Cinema.findById(cinemaId);
+        //creates a new movie with the found cinema 
         const newMovie = new Movie({
           movie_name,
           genre,
           description,
           cinema: cinemaId,
         });
+        //saves the newly created movie 
         const result = await newMovie.save();
+        //push the result to the assosiated cinema, and saves the cinema 
         //@ts-ignore
         await cinema.movies.push(result);
         //@ts-ignore
@@ -47,6 +55,7 @@ export const movieReslover = {
         throw error;
       }
     },
+    //deleted a movie by a specified id
     deleteMovie: async (_: any, { movieId }: any) => {
       try {
         //find the movie and delete it
@@ -63,7 +72,7 @@ export const movieReslover = {
         throw error;
       }
     },
-
+//edit a movie 
     editMovie: async (_:any, { movieId, movie_name, genre, description }:any) => {
         try {
         
@@ -94,8 +103,9 @@ export const movieReslover = {
   Movie: {
     cinema: async ({ cinema }: any) => {
       try {
+      
         const cinemaResult = await Cinema.findById({ _id: cinema }).exec();
-        console.log(cinemaResult);
+        console.log( cinemaResult);
         return cinemaResult;
       } catch (error) {
         console.log(error);
