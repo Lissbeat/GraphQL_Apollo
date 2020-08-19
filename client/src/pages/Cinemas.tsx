@@ -12,6 +12,7 @@ import { ListItem, List } from "./pageStyles/List";
 import {CinemasDetails, CinemaDetails_cinema} from "./interfaces/CinemaTypes";
 import { SelectButton } from "./pageStyles/Button";
 import SidebarLeft from "./sideBar/SideBar";
+import DeleteObject from "../components/DeleteObject";
 
 
 
@@ -54,6 +55,8 @@ const Cinemas: React.FC<ICinemas> = () => {
         {data.cinemas?.map((cinema: CinemaDetails_cinema) => (
             
           <List key={cinema.id}>
+
+<DeleteObject objectId= {cinema.id} objectName={cinema.cinema_name} objectType= {"deleteCinema"} > </DeleteObject>
       <h2>{cinema.cinema_name} </h2>
       <Divider />
     <Grid columns={4}>

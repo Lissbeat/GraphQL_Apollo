@@ -1,8 +1,5 @@
 
 import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar, Divider } from 'semantic-ui-react'
-import { navigate } from '@reach/router';
-import Modal from "@bdenzer/react-modal";
 import CreateCinema from '../../components/cinema/CreateCinema';
 import CreateMovie from '../../components/movie/CreateMovie';
 
@@ -32,6 +29,14 @@ const ModalView: React.FC<IModalView> = ({object, objectId, closeModal}) => {
             <CreateMovie closeModal= {closeModal} cinemaId= {objectId} />
             </div>
           );
+        }
+
+        if (object=== "deletemovie"){
+          return(
+            <div> 
+              
+            </div>
+          )
         }
    
     }

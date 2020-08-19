@@ -12,7 +12,7 @@ interface ICinemaModel extends mongoose.Document{
 
 const cinemaModel = new Schema(
   {
-    //required name
+    //required name, open, close
     cinema_name: {
       type: String, 
       required:true, 
@@ -31,7 +31,7 @@ const cinemaModel = new Schema(
         type: String, 
         required:true, 
       },
-     //can contain a list of decks
+     //can contain a list of movies
     movies: [
       {
         type: Schema.Types.ObjectId,

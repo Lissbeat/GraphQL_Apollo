@@ -10,6 +10,7 @@ import { Message } from "semantic-ui-react";
 import { ConfirmButton } from "../style-components/Buttons";
 import { ValidationCreate } from "./ValidationMovie";
 import CreateMovieInput from "./CreateMovieInput";
+import { GET_CINEMA } from "../../pages/Cinema";
 
 interface ICreate {
   cinemaId: any;

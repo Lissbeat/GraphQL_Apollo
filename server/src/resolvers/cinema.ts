@@ -41,13 +41,32 @@ export const cinemaReslover = {
         throw error;
       }
     },
-  },
+    deleteCinema: async (_, { cinemaId }) => {
+      try {
+        if (!mongoose.Types.ObjectId.isValid(cinemaId)) {
+          throw new UserInputError(cinemaId + 'is not a valid ID')
+        }
+        //finds the cinema by id and deletes it
+        const cinema = await Cinema.findByIdAndDelete(cinemaId);
+      
+        //delete all asosiated movies
+        await Movie.deleteMany({cinema: {$eq: cinemaId}}); 
+
+        return cinema;
+      }
+      catch (error) {
+        console.log(error);
+        throw error;
+
+      }
+  }
+},
   //specifies the Cinema type
   Cinema: {
     movies: async ({ id }: any) => {
       try {
         console.log("movie id"+ id);
-        
+
         const movies = await Movie.find({ cinema: id }).exec();
         return movies;
       } catch (error) {

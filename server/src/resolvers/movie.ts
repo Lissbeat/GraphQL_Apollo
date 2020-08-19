@@ -103,7 +103,6 @@ export const movieReslover = {
   Movie: {
     cinema: async ({ cinema }: any) => {
       try {
-      
         const cinemaResult = await Cinema.findById({ _id: cinema }).exec();
         console.log( cinemaResult);
         return cinemaResult;

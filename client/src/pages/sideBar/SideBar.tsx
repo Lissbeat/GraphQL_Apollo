@@ -9,6 +9,7 @@ interface ISideBar{
   object: string;
 }
 
+//Sidebar thats navigate to "home", and triggers a modal on "create" button 
 const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
 
     const [shouldShowModal, setModal] = React.useState(false);
@@ -40,6 +41,7 @@ const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
           Create
         </Menu.Item>
       </Sidebar>
+      {/* triggers a modal, thats create an object  */}
       <Modal
         
         open={shouldShowModal}
@@ -49,7 +51,7 @@ const SidebarLeft: React.FC<ISideBar> = ({object, objectId}) => {
         
       >
         <ModalView closeModal= {closeModal} object= {object} objectId= {objectId}/>
-        ></Modal>
+        </Modal>
               </React.Fragment>
     
   )

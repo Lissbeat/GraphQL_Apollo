@@ -29,7 +29,7 @@ export const CinemaSchema = gql`
     ): Cinema!
 
     #.......delete a cinema by id
-    deleteCinema(cinemaId: ID!): Cinema!
+    deleteCinema(cinemaId: ID!): Cinema
   }
 
   #.......Cinema type,

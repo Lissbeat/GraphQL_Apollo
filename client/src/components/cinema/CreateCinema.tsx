@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useMutation } from "@apollo/react-hooks";
-import { CREATE_MOVIE, GET_MOVIES, GET_CINEMAS } from "../Queries";
+import { GET_CINEMAS } from "../Queries";
 
 import { Formik, Form } from "formik";
 

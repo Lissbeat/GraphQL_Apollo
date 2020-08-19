@@ -15,14 +15,15 @@ font-size: 20px;
 color: black;
 text-align: center;
 font-weight: 100; 
-padding: 8px 15px 8px 15px;
+padding-top: 2%;
+padding-bottom: 2%; 
 font-family: "Trebuchet MS", Helvetica, sans-serif;
 letter-spacing: 0.2px;
 word-spacing: -0.2px;
 margin: auto;  
 margin-top: ${props => props.MarginTop}px; 
-margin-right: 20px; 
-margin-left: 10px; 
+margin-right: 10px; 
+margin-left: 70px; 
 margin-bottom: 10px; 
 border: 2px solid white;
 border-radius: 4px;
@@ -31,3 +32,14 @@ border-radius: 4px;
 background-color: darkgrey; 
 }
 `;
+
+export const DeleteButton= styled("div")`
+  font-size: 100%;
+  float: right;
+  color: white; 
+
+  background-color: transparent; 
+  &:hover{
+  background-color: darkgrey; 
+  } 
+  `;

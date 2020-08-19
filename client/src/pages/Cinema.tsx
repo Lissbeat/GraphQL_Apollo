@@ -12,6 +12,7 @@ import { ListItem, ListMovie } from "./pageStyles/List";
 import * as CinemaDetailsTypes from "./interfaces/CinemaTypes";
 import { SelectButton } from "./pageStyles/Button";
 import SidebarLeft from "./sideBar/SideBar";
+import DeleteObject from "../components/DeleteObject"; 
 
 
 
@@ -62,6 +63,8 @@ const Cinema: React.FC<ICinema> = ({cinemaId}) => {
       
         {data.cinema?.movies?.map((movie: CinemaDetailsTypes.CinemaDetails_cinema_movies) => (
           <ListMovie key={movie.id}>
+
+
       <h2>{movie.movie_name} </h2>
       <Divider />
     <Grid columns={4}>
